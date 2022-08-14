@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="684ea95b-3392-4872-a2ee-3209c1d858b6" name="Brainfuck" defaultType="TOOL">
+      <configuration id="e22c1b7f-a7f2-4997-b6d9-c9d17c7f917a" name="Brainfuck">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_Make" />
+        </build>
+      </configuration>
+    </target>
+  </component>
+</project>
