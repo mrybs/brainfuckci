@@ -1,6 +1,0 @@
-#include<iostream>
-#include<vector>
-#include<unistd.h>
-#include<termios.h>
-#include<string>
-using namespace std;char g(){char b=0;struct termios c={0};fflush(stdout);if(tcgetattr(0,&c)<0)perror("tcsetattr()");c.c_lflag&=~ICANON;c.c_lflag&=~ECHO;c.c_cc[VMIN]=1;c.c_cc[VTIME]=0;if(tcsetattr(0,TCSANOW,&c)<0)perror("");if(read(0,&b,1)<0)perror("read()");c.c_lflag|=ICANON;c.c_lflag|=ECHO;if(tcsetattr(0,TCSADRAIN,&c)< 0)perror("");return b;}string d(string a){return a;}void e(string a){long b=0;vector<char>c;c.push_back(0);int d=0;for(long i=0;i<a.size();i++){if(a[i]=='>'){b++;if(c.size()<=b)c.push_back(0);}if(a[i]=='<'){b--;if(b<0){throw overflow_error("Out of range, current cell is "+to_string(b)+". Minimum is 0");}}if(a[i]=='+')c[b]++;if(a[i]=='-')c[b]--;if(a[i]=='['){d=1;if(c[b]==0){while(d>0){i++;if(a[i]=='[')d++;if(a[i]==']')d--;}}}if(a[i]==']'){d=1;if(c[b]!=0){while(d>0){i--;if(a[i]=='[')d--;if(a[i]==']')d++;}}}if(a[i]=='.')cout<<c[b];if(a[i]==',')c[b]=g();}}int main(){string a=",>,<[<+<<<<+>>>>>-]>[<+<<<<+>>>>>-]<<<+>+[<+>>[<<->>->+>]>[<<+>>[<+>-]]<<<<[<]>>-]<-.[<+>-]<<[>[>+>+<<-]>[<+>-]<<-]>>>[<<<+>>>-]<<[-]<[<->-]<.";a=d(a);try{e(a);}catch(overflow_error j){cout<<j.what();}return 0;}
